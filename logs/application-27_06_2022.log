@@ -1,0 +1,26 @@
+2022-06-27 13:11:35 [Thread-4] INFO  Server.ServerStrategySolveSearchProblem - Starting server at port = 5401
+2022-06-27 13:11:35 [Thread-3] INFO  Server.ServerStrategySolveSearchProblem - Starting server at port = 5400
+2022-06-27 13:11:37 [Thread-3] INFO  Server.ServerStrategySolveSearchProblem - Client accepted: Socket[addr=/132.73.195.219,port=52742,localport=5400] to server - IP = LAPTOP-C55OTJ2D/132.73.195.219, Port = 5400
+2022-06-27 13:11:37 [pool-2-thread-1] INFO  Server.ServerStrategySolveSearchProblem - Maze with dimensions of [10,10] was generated for client: Socket[addr=/132.73.195.219,port=52742,localport=5400]
+2022-06-27 13:11:37 [pool-2-thread-1] INFO  Server.ServerStrategySolveSearchProblem - Done handling client: Socket[addr=/132.73.195.219,port=52742,localport=5400]
+2022-06-27 13:11:40 [Thread-4] INFO  Server.ServerStrategySolveSearchProblem - Client accepted: Socket[addr=/132.73.195.219,port=52743,localport=5401] to server - IP = LAPTOP-C55OTJ2D/132.73.195.219, Port = 5401
+2022-06-27 13:11:40 [pool-4-thread-1] INFO  Server.ServerStrategySolveSearchProblem - Maze was solved with Best First Search algorithm and found a solution of 12 steps for client: Socket[addr=/132.73.195.219,port=52743,localport=5401]
+2022-06-27 13:11:40 [pool-4-thread-1] INFO  Server.ServerStrategySolveSearchProblem - Done handling client: Socket[addr=/132.73.195.219,port=52743,localport=5401]
+2022-06-27 13:11:44 [JavaFX Application Thread] INFO  Server.ServerStrategySolveSearchProblem - Stopping server...
+2022-06-27 13:11:44 [JavaFX Application Thread] INFO  Server.ServerStrategySolveSearchProblem - Stopping server...
+2022-06-27 13:16:04 [Thread-4] INFO  Server.ServerStrategySolveSearchProblem - Starting server at port = 5401
+2022-06-27 13:16:04 [Thread-3] INFO  Server.ServerStrategySolveSearchProblem - Starting server at port = 5400
+2022-06-27 13:16:08 [Thread-3] INFO  Server.ServerStrategySolveSearchProblem - Client accepted: Socket[addr=/132.73.195.219,port=59803,localport=5400] to server - IP = LAPTOP-C55OTJ2D/132.73.195.219, Port = 5400
+2022-06-27 13:16:08 [pool-2-thread-1] INFO  Server.ServerStrategySolveSearchProblem - Maze with dimensions of [10,10] was generated for client: Socket[addr=/132.73.195.219,port=59803,localport=5400]
+2022-06-27 13:16:08 [pool-2-thread-1] INFO  Server.ServerStrategySolveSearchProblem - Done handling client: Socket[addr=/132.73.195.219,port=59803,localport=5400]
+2022-06-27 13:16:18 [Thread-4] INFO  Server.ServerStrategySolveSearchProblem - Client accepted: Socket[addr=/132.73.195.219,port=59804,localport=5401] to server - IP = LAPTOP-C55OTJ2D/132.73.195.219, Port = 5401
+2022-06-27 13:16:19 [pool-4-thread-1] INFO  Server.ServerStrategySolveSearchProblem - Maze was solved with Best First Search algorithm and found a solution of 13 steps for client: Socket[addr=/132.73.195.219,port=59804,localport=5401]
+2022-06-27 13:16:19 [pool-4-thread-1] INFO  Server.ServerStrategySolveSearchProblem - Done handling client: Socket[addr=/132.73.195.219,port=59804,localport=5401]
+2022-06-27 13:16:21 [Thread-3] INFO  Server.ServerStrategySolveSearchProblem - Client accepted: Socket[addr=/132.73.195.219,port=59805,localport=5400] to server - IP = LAPTOP-C55OTJ2D/132.73.195.219, Port = 5400
+2022-06-27 13:16:21 [pool-2-thread-2] INFO  Server.ServerStrategySolveSearchProblem - Maze with dimensions of [10,10] was generated for client: Socket[addr=/132.73.195.219,port=59805,localport=5400]
+2022-06-27 13:16:21 [pool-2-thread-2] INFO  Server.ServerStrategySolveSearchProblem - Done handling client: Socket[addr=/132.73.195.219,port=59805,localport=5400]
+2022-06-27 13:16:22 [Thread-4] INFO  Server.ServerStrategySolveSearchProblem - Client accepted: Socket[addr=/132.73.195.219,port=59806,localport=5401] to server - IP = LAPTOP-C55OTJ2D/132.73.195.219, Port = 5401
+2022-06-27 13:16:22 [pool-4-thread-2] INFO  Server.ServerStrategySolveSearchProblem - Maze was solved with Best First Search algorithm and found a solution of 11 steps for client: Socket[addr=/132.73.195.219,port=59806,localport=5401]
+2022-06-27 13:16:22 [pool-4-thread-2] INFO  Server.ServerStrategySolveSearchProblem - Done handling client: Socket[addr=/132.73.195.219,port=59806,localport=5401]
+2022-06-27 13:16:25 [JavaFX Application Thread] INFO  Server.ServerStrategySolveSearchProblem - Stopping server...
+2022-06-27 13:16:25 [JavaFX Application Thread] INFO  Server.ServerStrategySolveSearchProblem - Stopping server...
