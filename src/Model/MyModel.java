@@ -9,6 +9,7 @@ import algorithms.mazeGenerators.Maze;
 import algorithms.search.AState;
 import algorithms.search.MazeState;
 import algorithms.search.Solution;
+import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 
 import java.io.*;
@@ -216,11 +217,11 @@ public class MyModel extends Observable implements IModel{
     }
 
     @Override
-    public void movePlayer(KeyEvent move) {
+    public void movePlayer(KeyCode move) {
         if(myMaze == null)
             return;
 
-        switch (move.getCode()) {
+        switch (move) {
             case UP:
             case NUMPAD8:
                 if(moveLegit(rowPlayer - 1, colPlayer))
@@ -277,8 +278,6 @@ public class MyModel extends Observable implements IModel{
                 }
                 break;
         }
-
-        move.consume();
 
         setChanged();
         notifyObservers("movePlayer");

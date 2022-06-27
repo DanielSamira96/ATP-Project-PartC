@@ -1,6 +1,7 @@
 package ViewModel;
 
 import Model.IModel;
+import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 
 import java.util.Observable;
@@ -60,7 +61,7 @@ public class MyViewModel extends Observable implements Observer {
         return model.loadBoard(filePath);
     }
 
-    public void movePlayer(KeyEvent move) {
+    public void movePlayer(KeyCode move) {
         model.movePlayer(move);
     }
 

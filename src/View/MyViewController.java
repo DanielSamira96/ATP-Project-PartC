@@ -16,6 +16,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.Initializable;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.input.ScrollEvent;
@@ -238,7 +239,8 @@ public class MyViewController implements IView, Observer {
     }
 
     public void keyPressed(KeyEvent keyEvent) {
-        myViewModel.movePlayer(keyEvent);
+        myViewModel.movePlayer(keyEvent.getCode());
+        keyEvent.consume();
     }
 
     public void setPlayerPosition(int row, int col) {
@@ -369,6 +371,46 @@ public class MyViewController implements IView, Observer {
         zoomResetMaze();
         if(!sound)
             playMusic("themeSong");
+    }
+
+    public void onMouseDragged(MouseEvent mouseEvent) {
+        if (myViewModel.getBoard() == null)
+            return;
+
+        int mouseX, mouseY, PlayerX, PlayerY;
+
+        mouseX = (int) (mouseEvent.getX() / (mazeDisplayer.getWidth() / myViewModel.getBoard()[0].length));
+        mouseY = (int) (mouseEvent.getY() / (mazeDisplayer.getHeight() / myViewModel.getBoard().length));
+
+        PlayerY = myViewModel.getPlayerRow();
+        PlayerX = myViewModel.getPlayerCol();
+
+        if (mouseY < (PlayerY - 1) || mouseY > (PlayerY + 1) || mouseX < (PlayerX - 1) || mouseX > (PlayerX + 1))
+            return;
+
+        if (mouseY < PlayerY && mouseX == PlayerX)
+            myViewModel.movePlayer(KeyCode.UP);
+
+        else if (mouseY > PlayerY && mouseX == PlayerX)
+            myViewModel.movePlayer(KeyCode.DOWN);
+
+        else if (mouseY == PlayerY && mouseX > PlayerX)
+            myViewModel.movePlayer(KeyCode.RIGHT);
+
+        else if (mouseY == PlayerY && mouseX < PlayerX)
+            myViewModel.movePlayer(KeyCode.LEFT);
+
+        else if (mouseY < PlayerY && mouseX > PlayerX)
+            myViewModel.movePlayer(KeyCode.NUMPAD9);
+
+        else if (mouseY > PlayerY && mouseX > PlayerX)
+            myViewModel.movePlayer(KeyCode.NUMPAD3);
+
+        else if (mouseY > PlayerY && mouseX < PlayerX)
+            myViewModel.movePlayer(KeyCode.NUMPAD1);
+
+        else if (mouseY < PlayerY && mouseX < PlayerX)
+            myViewModel.movePlayer(KeyCode.NUMPAD7);
     }
 
     public void Focus(MouseEvent mouseEvent){

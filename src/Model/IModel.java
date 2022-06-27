@@ -1,5 +1,6 @@
 package Model;
 
+import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 
 public interface IModel {
@@ -16,7 +17,7 @@ public interface IModel {
     boolean saveBoard(String filePath);
     boolean loadBoard(String filePath);
     void connectServers();
-    void movePlayer(KeyEvent move);
+    void movePlayer(KeyCode move);
     boolean succeed();
     void close();
     void startOver();

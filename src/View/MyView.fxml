@@ -99,7 +99,7 @@
     <center>
         <Pane fx:id="mazePane" prefHeight="494.0" prefWidth="678.0" BorderPane.alignment="CENTER">
             <children>
-                <MazeDisplayer fx:id="mazeDisplayer" height="600.0" imageFileNameBack="./resources/images/land.jpg" imageFileNameGoal="./resources/images/MarcoMom.png" imageFileNamePlayer="./resources/images/Marco1.png" imageFileNameSolution="./resources/images/sol.jpg" imageFileNameWall="./resources/images/Water.jpg" onKeyPressed="#keyPressed" width="600.0" />
+                <MazeDisplayer fx:id="mazeDisplayer" height="600.0" imageFileNameBack="./resources/images/land.jpg" imageFileNameGoal="./resources/images/MarcoMom.png" imageFileNamePlayer="./resources/images/Marco1.png" imageFileNameSolution="./resources/images/sol.jpg" imageFileNameWall="./resources/images/Water.jpg" onKeyPressed="#keyPressed" onMouseDragged="#onMouseDragged" width="600.0" />
             </children>
             <padding>
                 <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
