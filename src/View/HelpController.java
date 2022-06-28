@@ -22,7 +22,7 @@ public class HelpController {
         imageMarco.setImage(new Image("/images/Marco1.png"));
         imageMom.setImage(new Image("/images/MarcoMom.png"));
         imageNumbers.setImage(new Image("/images/numpad.jpg"));
-        imageWater.setImage(new Image("/images/Water.jpg"));
+        imageWater.setImage(new Image("/images/Water.png"));
     }
 }
 

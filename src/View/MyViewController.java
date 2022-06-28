@@ -1,19 +1,14 @@
 package View;
 
 import ViewModel.MyViewModel;
-import javafx.application.Platform;
 import javafx.beans.value.ChangeListener;
-import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.canvas.Canvas;
 import javafx.scene.control.*;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 import javafx.event.ActionEvent;
-import javafx.fxml.Initializable;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyCode;
@@ -25,17 +20,12 @@ import javafx.scene.layout.Pane;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 import javafx.stage.FileChooser;
-import algorithms.mazeGenerators.*;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
-import javax.swing.*;
 import java.io.File;
-import java.net.URL;
 import java.util.Observable;
 import java.util.Observer;
-import java.util.ResourceBundle;
-
 
 
 public class MyViewController implements IView, Observer {
@@ -60,9 +50,14 @@ public class MyViewController implements IView, Observer {
 
     public static MediaPlayer mediaPlayer = null;
     public static boolean sound = false;
+    private boolean zoomOn = false;
+    private MouseEvent mouseEventPressed = null;
 
     StringProperty updatePlayerRow = new SimpleStringProperty();
     StringProperty updatePlayerCol = new SimpleStringProperty();
+    private double MousePressedTranslateX;
+    private double MousePressedTranslateY;
+
 
     public String getUpdatePlayerRow() {
         return updatePlayerRow.get();
@@ -131,7 +126,6 @@ public class MyViewController implements IView, Observer {
             return;
         }
         myViewModel.generateBoard(rows, cols);
-
     }
 
     public void startOver(ActionEvent actionEvent) {
@@ -351,14 +345,16 @@ public class MyViewController implements IView, Observer {
             }
             mazeDisplayer.setScaleX(mazeDisplayer.getScaleX() * zoomValue);
             mazeDisplayer.setScaleY(mazeDisplayer.getScaleY() * zoomValue);
+            zoomOn = true;
         }
     }
 
     private void zoomResetMaze(){
-        //mazeDisplayer.setTranslateY(mazeDisplayer.getParent().getTranslateY());
-        //mazeDisplayer.setTranslateX(mazeDisplayer.getParent().getTranslateX());
-        mazeDisplayer.setScaleY(mazeDisplayer.getParent().getScaleY());
+        mazeDisplayer.setTranslateX(mazeDisplayer.getParent().getTranslateX());
+        mazeDisplayer.setTranslateY(mazeDisplayer.getParent().getTranslateY());
         mazeDisplayer.setScaleX(mazeDisplayer.getParent().getScaleX());
+        mazeDisplayer.setScaleY(mazeDisplayer.getParent().getScaleY());
+        zoomOn = false;
     }
 
     private void showNewMaze()
@@ -386,7 +382,10 @@ public class MyViewController implements IView, Observer {
         PlayerX = myViewModel.getPlayerCol();
 
         if (mouseY < (PlayerY - 1) || mouseY > (PlayerY + 1) || mouseX < (PlayerX - 1) || mouseX > (PlayerX + 1))
+        {
+            moveZoom(mouseEvent);
             return;
+        }
 
         if (mouseY < PlayerY && mouseX == PlayerX)
             myViewModel.movePlayer(KeyCode.UP);
@@ -411,6 +410,23 @@ public class MyViewController implements IView, Observer {
 
         else if (mouseY < PlayerY && mouseX < PlayerX)
             myViewModel.movePlayer(KeyCode.NUMPAD7);
+    }
+
+    public void onMouseClicked(MouseEvent mouseEvent)
+    {
+        MousePressedTranslateX = mazeDisplayer.getTranslateX();
+        MousePressedTranslateY = mazeDisplayer.getTranslateY();
+        mouseEventPressed = mouseEvent;
+    }
+
+    private void moveZoom(MouseEvent mouseEvent) {
+
+        if (!zoomOn || mouseEventPressed == null)
+            return;
+
+        mazeDisplayer.setTranslateX((int) (MousePressedTranslateX + (mouseEvent.getSceneX() - mouseEventPressed.getSceneX())));
+        mazeDisplayer.setTranslateY((int) (MousePressedTranslateY + (mouseEvent.getSceneY() - mouseEventPressed.getSceneY())));
+
     }
 
     public void Focus(MouseEvent mouseEvent){

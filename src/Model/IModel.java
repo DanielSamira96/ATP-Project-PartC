@@ -1,7 +1,6 @@
 package Model;
 
 import javafx.scene.input.KeyCode;
-import javafx.scene.input.KeyEvent;
 
 public interface IModel {
 

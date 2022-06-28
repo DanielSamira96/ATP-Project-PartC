@@ -9,7 +9,6 @@ import java.io.FileInputStream;
 import java.io.IOException;
 
 public class Properties {
-    private static Properties obj;
     public Label threadPoolSize;
     public Label mazeGeneratingAlgorithm;
     public Label mazeSearchingAlgorithm;

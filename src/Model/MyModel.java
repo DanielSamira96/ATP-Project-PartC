@@ -4,13 +4,11 @@ import Client.*;
 import IO.MyCompressorOutputStream;
 import IO.MyDecompressorInputStream;
 import Server.*;
-import algorithms.mazeGenerators.IMazeGenerator;
 import algorithms.mazeGenerators.Maze;
 import algorithms.search.AState;
 import algorithms.search.MazeState;
 import algorithms.search.Solution;
 import javafx.scene.input.KeyCode;
-import javafx.scene.input.KeyEvent;
 
 import java.io.*;
 import java.net.InetAddress;
@@ -93,7 +91,6 @@ public class MyModel extends Observable implements IModel{
                     } catch (Exception var10) {
                         return;
                     }
-
                 }
             });
             client.communicateWithServer();
@@ -206,8 +203,6 @@ public class MyModel extends Observable implements IModel{
         return true;
     }
 
-
-
         @Override
     public void connectServers() {
         generateServer = new Server(5400, 1000, new ServerStrategyGenerateMaze());
@@ -287,7 +282,6 @@ public class MyModel extends Observable implements IModel{
             setChanged();
             notifyObservers("succeed");
         }
-
     }
 
     @Override
@@ -325,6 +319,7 @@ public class MyModel extends Observable implements IModel{
                     if(myMaze.getCellValue(i, j) == 2)
                         myMaze.setCell(i, j, 0);
     }
+
     private void showSolution(){
         // show the solution of the maze
         ArrayList<AState> mazeSolutionSteps = solution.getSolutionPath();

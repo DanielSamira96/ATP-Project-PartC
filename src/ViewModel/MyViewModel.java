@@ -2,8 +2,6 @@ package ViewModel;
 
 import Model.IModel;
 import javafx.scene.input.KeyCode;
-import javafx.scene.input.KeyEvent;
-
 import java.util.Observable;
 import java.util.Observer;
 

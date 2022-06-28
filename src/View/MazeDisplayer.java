@@ -1,13 +1,10 @@
 package View;
 
-import algorithms.mazeGenerators.Maze;
-import javafx.beans.property.IntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
 import javafx.scene.paint.Color;
 
 import java.io.FileInputStream;
@@ -33,7 +30,6 @@ public class MazeDisplayer extends Canvas {
     Image backImage = null;
     Image playerImage = null;
     Image goalImage = null;
-
 
 
     public void initializeImages() {
@@ -179,8 +175,10 @@ public class MazeDisplayer extends Canvas {
                 {
                     if(solutionImage == null)
                         graphicsContext.fillRect(x, y, cellWidth, cellHeight);
-                    else
+                    else {
+                        graphicsContext.drawImage(backImage, x, y, cellWidth, cellHeight);
                         graphicsContext.drawImage(solutionImage, x, y, cellWidth, cellHeight);
+                    }
                 }
             }
         }
