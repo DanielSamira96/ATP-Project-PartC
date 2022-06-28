@@ -1,29 +1,17 @@
 package View;
 
-import javafx.beans.property.SimpleStringProperty;
-import javafx.beans.property.StringProperty;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
 import javafx.scene.paint.Color;
 
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 
 public class MazeDisplayer extends Canvas {
     private int[][] maze = null;
-    // player position:
     private int playerRow;
     private int playerCol;
     private int goalRow;
     private int goalCol;
-
-    // wall and player images:
-    StringProperty imageFileNameWall = new SimpleStringProperty();
-    StringProperty imageFileNamePlayer = new SimpleStringProperty();
-    StringProperty imageFileNameSolution = new SimpleStringProperty();
-    StringProperty imageFileNameGoal = new SimpleStringProperty();
-    StringProperty imageFileNameBack = new SimpleStringProperty();
 
     Image wallImage = null;
     Image solutionImage = null;
@@ -34,22 +22,14 @@ public class MazeDisplayer extends Canvas {
 
     public void initializeImages() {
         try {
-            wallImage = new Image(new FileInputStream(getImageFileNameWall()));
-            solutionImage = new Image(new FileInputStream(getImageFileNameSolution()));
-            backImage = new Image(new FileInputStream(getImageFileNameBack()));
-            playerImage = new Image(new FileInputStream(getImageFileNamePlayer()));
-            goalImage = new Image(new FileInputStream(getImageFileNameGoal()));
+            wallImage = new Image("/images/Water.png");
+            solutionImage = new Image("/images/sol.png");
+            backImage = new Image("/images/land.png");
+            playerImage = new Image("/images/Marco1.png");
+            goalImage = new Image("/images/MarcoMom.png");
         }
-        catch (FileNotFoundException e) {
+        catch (Exception e) {
         }
-    }
-
-    public int getPlayerRow() {
-        return playerRow;
-    }
-
-    public int getPlayerCol() {
-        return playerCol;
     }
 
     public void setPlayerPosition(int row, int col) {
@@ -57,67 +37,6 @@ public class MazeDisplayer extends Canvas {
         this.playerCol = col;
         draw();
     }
-
-    public String getImageFileNameWall() {
-        return imageFileNameWall.get();
-    }
-
-    public String getImageFileNameSolution() {
-        return imageFileNameSolution.get();
-    }
-
-    public String getImageFileNameGoal() {
-        return imageFileNameGoal.get();
-    }
-
-    public String getImageFileNameBack() {
-        return imageFileNameBack.get();
-    }
-
-    public String imageFileNameWallProperty() {
-        return imageFileNameWall.get();
-    }
-
-    public String imageFileNameBackProperty() {
-        return imageFileNameBack.get();
-    }
-
-    public void setImageFileNameWall(String imageFileNameWall) {
-        this.imageFileNameWall.set(imageFileNameWall);
-    }
-
-    public void setImageFileNameBack(String imageFileNameBack) {
-        this.imageFileNameBack.set(imageFileNameBack);
-    }
-
-    public String getImageFileNamePlayer() {
-        return imageFileNamePlayer.get();
-    }
-
-    public String imageFileNamePlayerProperty() {
-        return imageFileNamePlayer.get();
-    }
-
-    public void setImageFileNamePlayer(String imageFileNamePlayer) {
-        this.imageFileNamePlayer.set(imageFileNamePlayer);
-    }
-
-    public String imageFileNameSolutionProperty() {
-        return imageFileNameSolution.get();
-    }
-
-    public void setImageFileNameSolution(String imageFileNameSolution) {
-        this.imageFileNameSolution.set(imageFileNameSolution);
-    }
-
-    public String imageFileNameGoalProperty() {
-        return imageFileNameGoal.get();
-    }
-
-    public void setImageFileNameGoal(String imageFileNameGoal) {
-        this.imageFileNameGoal.set(imageFileNameGoal);
-    }
-
 
     public void setMaze(int[][] mazeArray, int startRow, int startCol, int goalRow, int goalCol) {
         this.goalRow = goalRow;

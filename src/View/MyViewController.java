@@ -24,6 +24,7 @@ import javafx.stage.Modality;
 import javafx.stage.Stage;
 
 import java.io.File;
+import java.net.URISyntaxException;
 import java.util.Observable;
 import java.util.Observer;
 
@@ -151,7 +152,10 @@ public class MyViewController implements IView, Observer {
         FileChooser fc = new FileChooser();
         fc.setTitle("Save maze");
         fc.getExtensionFilters().add(new FileChooser.ExtensionFilter("Maze files (*.maze)", "*.maze"));
-        fc.setInitialDirectory(new File("./resources/mazes"));
+        File directory = new File("./mazes");
+        if(!directory.exists())
+            directory.mkdirs();
+        fc.setInitialDirectory(directory);
         fc.setInitialFileName("maze.maze");
         File chosen = fc.showSaveDialog(null);
         if(chosen == null)
@@ -166,7 +170,10 @@ public class MyViewController implements IView, Observer {
         FileChooser fc = new FileChooser();
         fc.setTitle("Open maze");
         fc.getExtensionFilters().add(new FileChooser.ExtensionFilter("Maze files (*.maze)", "*.maze"));
-        fc.setInitialDirectory(new File("./resources/mazes"));
+        File directory = new File("./mazes");
+        if(!directory.exists())
+            directory.mkdirs();
+        fc.setInitialDirectory(directory);
         File chosen = fc.showOpenDialog(null);
         if(chosen == null)
             return;
@@ -284,19 +291,24 @@ public class MyViewController implements IView, Observer {
         }
     }
 
-    public static void playMusic(String operation)
-    {
+    public static void playMusic(String operation) {
         if(mediaPlayer != null)
             mediaPlayer.stop();
         switch (operation) {
             case "themeSong" -> {
-                mediaPlayer = new MediaPlayer(new Media(new File("resources/music/song.mp3").toURI().toString()));
+                try {
+                    mediaPlayer = new MediaPlayer(new Media(MyViewController.class.getResource("/music/song.mp3").toURI().toString()));
+                } catch (URISyntaxException e) {
+                }
                 mediaPlayer.setCycleCount(MediaPlayer.INDEFINITE);
                 mediaPlayer.play();
                 sound = true;
             }
             case "endSong" -> {
-                mediaPlayer = new MediaPlayer(new Media(new File("resources/music/mama.mp3").toURI().toString()));
+                try {
+                    mediaPlayer = new MediaPlayer(new Media(MyViewController.class.getResource("/music/mama.mp3").toURI().toString()));
+                } catch (URISyntaxException e) {
+                }
                 mediaPlayer.setCycleCount(MediaPlayer.INDEFINITE);
                 mediaPlayer.play();
                 sound = true;

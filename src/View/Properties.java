@@ -1,12 +1,9 @@
 package View;
 
-import Server.Configurations;
+import Server.*;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 import javafx.scene.control.Label;
-
-import java.io.FileInputStream;
-import java.io.IOException;
 
 public class Properties {
     public Label threadPoolSize;
@@ -20,32 +17,16 @@ public class Properties {
 
     public void initialize() {
         try {
-            FileInputStream input = new FileInputStream("resources/config.properties");
+            updatethreadPoolSize.set(String.valueOf(Configurations.getInstance().getThreadPoolSize()));
+            threadPoolSize.textProperty().bind(updatethreadPoolSize);
 
-            try {
-                java.util.Properties prop = new java.util.Properties();
-                prop.load(input);
+            updatemazeGeneratingAlgorithm.set(Configurations.getInstance().getMazeGeneratingAlgorithm());
+            mazeGeneratingAlgorithm.textProperty().bind(updatemazeGeneratingAlgorithm);
 
-                updatethreadPoolSize.set(prop.getProperty("threadPoolSize"));
-                threadPoolSize.textProperty().bind(updatethreadPoolSize);
-                updatemazeGeneratingAlgorithm.set(prop.getProperty("mazeGeneratingAlgorithm"));
-                mazeGeneratingAlgorithm.textProperty().bind(updatemazeGeneratingAlgorithm);
-                updatemazeSearchingAlgorithm.set(prop.getProperty("mazeSearchingAlgorithm"));
-                mazeSearchingAlgorithm.textProperty().bind(updatemazeSearchingAlgorithm);
+            updatemazeSearchingAlgorithm.set(Configurations.getInstance().getMazeSearchingAlgorithm());
+            mazeSearchingAlgorithm.textProperty().bind(updatemazeSearchingAlgorithm);
 
-            } catch (Throwable var5) {
-                try {
-                    input.close();
-                } catch (Throwable var4) {
-                    var5.addSuppressed(var4);
-                }
-
-                throw var5;
-            }
-
-            input.close();
-        } catch (IOException var6) {
-            var6.printStackTrace();
+        } catch (Exception e) {
         }
     }
 }
